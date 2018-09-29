@@ -1,0 +1,50 @@
+import threading
+from socket import *
+
+class MyThread(threading.Thread):
+    def __init__(self,func,args=()):
+        super(MyThread,self).__init__()
+        self.func = func
+        self.args = args
+
+    def run(self):
+        self.result = self.func(*self.args)
+
+    def get_result(self):
+        try:
+            return self.result
+        except Exception:
+            return None
+
+def connect_from(tcpSer):
+    tcpCli, addr = tcpSer.accept()
+    return tcpCli,True
+
+#tcpSerPi = socket(AF_INET, SOCK_STREAM)
+#tcpSerPi.bind(('',9997))
+#tcpSerPi.listen(5)
+#socket_pi = False
+
+#tcpSerEsp = socket(AF_INET, SOCK_STREAM)
+#tcpSerEsp.bind(('',9998))
+#tcpSerEsp.listen(5)
+#socket_esp = False
+
+#t_pi = MyThread(connect_from,args=(tcpSerPi,))
+#t_esp = MyThread(connect_from,args=(tcpSerEsp,))
+#t_pi.start()
+#t_esp.start()
+#t_pi.join()
+#t_esp.join()
+#tcp_pi,socket_pi = t_pi.get_result()
+#tcp_esp,socket_esp = t_esp.get_result()
+#while True:
+#    if socket_pi and socket_esp:
+#        break
+
+#tcp_pi.send('OK')
+#tcp_esp.send('OK')
+#tcp_pi.close()
+#tcp_esp.close()
+#tcpSerPi.close()
+#tcpSerEsp.close()
