@@ -1,0 +1,2 @@
+# FaceRecognition_EntranceGuardSystem
+人脸识别门禁系统-2018电子设计大赛初赛
